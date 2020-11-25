@@ -1,0 +1,39 @@
+<logging>
+    <filter enabled="true">
+        <tag>stdout</tag>
+        <type>console</type>
+        <!-- level is (:?FINEST|FINE|DEBUG|TRACE|INFO|WARNING|ERROR) -->
+        <level>DEBUG</level>
+    </filter>
+    <filter enabled="true">
+        <tag>file</tag>
+        <type>file</type>
+        <level>INFO</level>
+        <property name="filename">E:\\default.log</property>
+
+        <property name="format">[%D %T] [%L] (%S) %M</property>
+        <property name="rotate">false</property> <!-- true enables log rotation, otherwise append -->
+        <property name="maxsize">10M</property> <!-- \d+[KMG]? Suffixes are in terms of 2**10 -->
+        <property name="maxlines">0K</property> <!-- \d+[KMG]? Suffixes are in terms of thousands -->
+        <property name="daily">false
+        </property> <!-- Automatically rotates when a log message is written after midnight -->
+    </filter>
+    <!--<filter enabled="false">-->
+        <!--<tag>xmllog</tag>-->
+        <!--<type>xml</type>-->
+        <!--<level>INFO</level>-->
+        <!--<property name="filename">trace.xml</property>-->
+        <!--<property name="rotate">true</property> &lt;!&ndash; true enables log rotation, otherwise append &ndash;&gt;-->
+        <!--<property name="maxsize">100M</property> &lt;!&ndash; \d+[KMG]? Suffixes are in terms of 2**10 &ndash;&gt;-->
+        <!--<property name="maxrecords">6K</property> &lt;!&ndash; \d+[KMG]? Suffixes are in terms of thousands &ndash;&gt;-->
+        <!--<property name="daily">false-->
+        <!--</property> &lt;!&ndash; Automatically rotates when a log message is written after midnight &ndash;&gt;-->
+    <!--</filter>-->
+    <!--<filter enabled="false">&lt;!&ndash; enabled=false means this logger won't actually be created &ndash;&gt;-->
+        <!--<tag>donotopen</tag>-->
+        <!--<type>socket</type>-->
+        <!--<level>FINEST</level>-->
+        <!--<property name="endpoint">192.168.1.255:12124</property> &lt;!&ndash; recommend UDP broadcast &ndash;&gt;-->
+        <!--<property name="protocol">udp</property> &lt;!&ndash; tcp or udp &ndash;&gt;-->
+    <!--</filter>-->
+</logging>

@@ -1,0 +1,14 @@
+ID: 1
+IP: 127.0.0.1
+PBFT_PORT: 8081
+HTTP_PORT: 8091
+Peers:
+  - 1
+  - 2
+  - 3
+ElectionTick: 3
+Routers:
+  1: "127.0.0.1:8081"
+  2: "127.0.0.1:8082"
+HeartbeatTick: 2
+StorageDir: E:\\db.txt

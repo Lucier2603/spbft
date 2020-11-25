@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+message PbftMsg {
+    uint64 SequenceId = 1;
+    uint64 From = 2;
+    uint64 To = 3;
+    uint64 ViewId = 4;
+    MessageType MsgType = 5;
+    string Digest = 6;
+}
+
+enum MessageType {
+	MsgHup             = 0;
+	MsgBeat            = 1;
+	MsgProp            = 2;
+	MsgApp             = 3;
+	MsgAppResp         = 4;
+	MsgVote            = 5;
+	MsgVoteResp        = 6;
+	MsgSnap            = 7;
+	MsgHeartbeat       = 8;
+	MsgHeartbeatResp   = 9;
+	MsgUnreachable     = 10;
+	MsgSnapStatus      = 11;
+	MsgCheckQuorum     = 12;
+	MsgTransferLeader  = 13;
+	MsgTimeoutNow      = 14;
+	MsgReadIndex       = 15;
+	MsgReadIndexResp   = 16;
+	MsgPreVote         = 17;
+	MsgPreVoteResp     = 18;
+
+	NewTrxReq           = 19;
+	NewTrxResp          = 20;
+	PreprepareReq       = 21;
+	PreprepareResp      = 22;
+	PrepareReq          = 23;
+	PrepareResp         = 24;
+	CommitReq           = 25;
+	CommitResp          = 26;
+}
+
+enum EntryType {
+	EntryNormal     = 0;
+	EntryConfChange = 1;
+}
+
+message Entry {
+	uint64     ViewId  = 2;
+	uint64     Index = 3;
+	EntryType  Type  = 1;
+	bytes      Data  = 4;
+}
+
+message HardState {
+	uint64 View   = 1;
+	uint64 Vote   = 2;
+	uint64 Commit = 3;
+}
+
+message ConfState {
+	repeated uint64 nodes    = 1;
+	repeated uint64 learners = 2;
+}
+
+enum ConfChangeType {
+	ConfChangeAddNode        = 0;
+	ConfChangeRemoveNode     = 1;
+	ConfChangeUpdateNode     = 2;
+	ConfChangeAddLearnerNode = 3;
+}
+
+message ConfChange {
+	uint64          ID      = 1;
+	ConfChangeType  Type    = 2;
+	uint64          NodeID  = 3;
+	bytes           Context = 4;
+}

@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message Consenter {
+    string Host = 1;
+    uint32 Port = 2;
+    bytes ClientTlsCert = 3;
+    bytes ServerTlsCert = 4;
+}
+
+message Options {
+    string TickInterval = 1;
+    uint32 ElectionTick = 2;
+    uint32 HeartbeatTick = 3;
+    uint32 MaxInflightBlocks = 4;
+    uint32 SnapshotIntervalSize = 5;
+}
+
+message ConfigMetaData {
+    repeated Consenter Consenters = 1;
+    Options Options = 2;
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+message BlockMetadata {
+    repeated uint64 ConsenterIds    = 1;
+    uint64 NextConsenterId          = 2;
+    uint64 PbftIndex                = 3;
+}
+
+message ClusterMetadata {
+    repeated uint64 ActiveNodes     = 1;
+}
